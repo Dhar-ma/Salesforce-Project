@@ -1,0 +1,53 @@
+
+ <template>
+    <lightning-card title="Account Record" >
+    <div style="
+  width: 100%;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+  padding: 20px;">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label" style="height: 300px ;"  >
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">Account Name</th>
+                    <th class="" scope="col">Account Id</th>
+                    
+                </tr>
+            </thead> 
+            <template for:each={accounts.data} for:item="actobj" for:index="index" >
+                 <tr key={actobj.Id} class="slds-hint-parent">
+                     <td><a href="#" onclick={handelClick} data-accountid={actobj.Id}>{actobj.Name}</a></td>
+                     <td>{actobj.Id}</td>
+                     <td><lightning-input
+                        label={actobj.name}
+                        type="checkbox"
+                        data-accountid={actobj.Id}
+                        checked="false"
+                        onchange={handelClick}
+                        
+                        >
+                         </lightning-input>
+                     </td>
+                     
+                 </tr>
+             </template>
+         </table>
+    </div>
+     <c-contact-list account-id={accountidfrmAccount}></c-contact-list>
+    </lightning-card>
+</template> 
+<!-- <template>
+    <lightning-card title="Account Records">
+        <div style="height: 300px;">
+            <lightning-datatable if:true={accounts.data}
+                    key-field="accounts.id"
+                    data={accounts.data}
+                    columns={columns}
+                    onrowselection={handelClick}
+            ></lightning-datatable>
+        </div>    
+    </lightning-card>
+</template> -->
+
